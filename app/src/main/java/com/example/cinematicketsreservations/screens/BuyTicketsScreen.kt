@@ -68,20 +68,20 @@ fun BuyTicketsScreen() {
                         painter = painterResource(id = R.drawable.frame_13),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(78.dp)
+                            .size(56.dp)
 
                     )
                     Image(
                         painter = painterResource(id = R.drawable.frame_14),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(78.dp)
+                            .size(56.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.frame_15),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(78.dp)
+                            .size(56.dp)
                     )
 
                 }
@@ -98,7 +98,7 @@ fun BuyTicketsScreen() {
                     color = Color.White
                 )
         ) {
-            Column {
+            Column() {
                 ChipDay()
                 ChipHour()
 
