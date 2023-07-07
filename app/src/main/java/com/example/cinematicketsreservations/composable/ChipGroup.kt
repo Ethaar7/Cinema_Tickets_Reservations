@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import com.example.cinematicketsreservations.ui.theme.Primary
 
 @Composable
-fun chipGroup() {
+fun chipGroup(modifier: Modifier = Modifier) {
 
     val chipList: List<String> = listOf(
         "Now Showing",
@@ -37,7 +37,7 @@ fun chipGroup() {
 
 
     Row(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = 24.dp, start = 16.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
