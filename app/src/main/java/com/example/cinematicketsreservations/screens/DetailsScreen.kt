@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -38,6 +37,7 @@ import com.example.cinematicketsreservations.composable.TextContent
 @Composable
 fun DetailsScreen() {
     Box(Modifier.fillMaxSize()) {
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -69,19 +69,19 @@ fun DetailsScreen() {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 16.dp)
                 .background(
-                    shape = AbsoluteRoundedCornerShape(16.dp),
+                    shape = AbsoluteRoundedCornerShape(32.dp),
                     color = Color.White
                 )
         ) {
 
             Column(
-                modifier = Modifier.wrapContentSize(),
+                modifier = Modifier,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 32.dp, bottom = 16.dp),
+                        .padding(16.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     TextContent(
@@ -108,6 +108,7 @@ fun DetailsScreen() {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     contentPadding = PaddingValues(horizontal = 32.dp),
+                    modifier = Modifier.padding(top = 8.dp)
                 ) {
                     item {
                         ActorItem(painter = painterResource(R.drawable.licensed_image))
@@ -123,11 +124,9 @@ fun DetailsScreen() {
                         ActorItem(painter = painterResource(R.drawable.licensed_image))
                     }
                 }
+
                 DescriptionText()
-
                 Spacer(modifier = Modifier.weight(1f))
-
-
                 Bottom(
                     text = stringResource(R.string.booking),
                     modifier = Modifier
