@@ -3,7 +3,8 @@ package com.example.cinematicketsreservations
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.cinematicketsreservations.screens.DetailsScreen
+import com.example.cinematicketsreservations.screens.HomeScreen
+import com.example.cinematicketsreservations.screens.HomeUiState
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
@@ -14,9 +15,9 @@ class MainActivity : ComponentActivity() {
 //            chipGroup()
 //            AutoSliding()
 //            BottomNavigation()
-            DetailsScreen()
+//            DetailsScreen()
 //            BuyTicketsScreen()
-//            HomeScreen()
+            HomeScreen(HomeUiState())
 
         }
     }

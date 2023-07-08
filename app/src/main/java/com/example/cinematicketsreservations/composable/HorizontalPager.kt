@@ -6,16 +6,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.cinematicketsreservations.R
+import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 
@@ -23,12 +21,10 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 @ExperimentalPagerApi
 @Composable
 fun AutoSliding(
-    images: List<Int>,
+    images: List<String>,
     modifier: Modifier = Modifier,
+    pagerState: PagerState
 ) {
-    val pagerState = rememberPagerState(
-        initialPage = 1,
-    )
 
     HorizontalPager(
         state = pagerState,
@@ -39,7 +35,7 @@ fun AutoSliding(
     ) {
 
         Image(
-            painter = painterResource(images[it]),
+            painter = rememberAsyncImagePainter(model = images[it]),
             contentDescription = "Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -50,17 +46,17 @@ fun AutoSliding(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
-@Preview(showSystemUi = true)
-@Composable
-fun Preview() {
-    AutoSliding(
-        images = listOf(
-            R.drawable.poster_film,
-            R.drawable.poster_film2,
-            R.drawable.fb3_poster_jude_law_full,
-            R.drawable.aberforth_richard_coyle_scaled,
-            R.drawable.s_l1600
-        )
-    )
-}
+//@OptIn(ExperimentalPagerApi::class)
+//@Preview(showSystemUi = true)
+//@Composable
+//fun Preview() {
+//    AutoSliding(
+//        images = listOf(
+//            R.drawable.poster_film,
+//            R.drawable.poster_film2,
+//            R.drawable.fb3_poster_jude_law_full,
+//            R.drawable.aberforth_richard_coyle_scaled,
+//            R.drawable.s_l1600
+//        )
+//    )
+//}
