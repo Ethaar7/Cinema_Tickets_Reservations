@@ -1,6 +1,8 @@
 package com.example.cinematicketsreservations.composable
 
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,8 +11,10 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
@@ -30,19 +34,22 @@ fun AutoSliding(
         state = pagerState,
         modifier = Modifier,
         contentPadding = PaddingValues(horizontal = 32.dp),
-        pageSpacing = 16.dp,
+        pageSpacing = 4.dp,
         pageCount = images.size
     ) {
-
+        val animatedScale by animateFloatAsState(
+            targetValue = if (it == pagerState.currentPage) 1f else 0.9f,
+            animationSpec = tween(durationMillis = 200)
+        )
         Image(
             painter = rememberAsyncImagePainter(model = images[it]),
             contentDescription = "Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .aspectRatio(3 / 4f)
+                .scale(animatedScale)
                 .clip(RoundedCornerShape(16))
         )
-
     }
 }
 
