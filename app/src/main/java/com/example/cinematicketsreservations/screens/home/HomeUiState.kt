@@ -1,4 +1,4 @@
-package com.example.cinematicketsreservations.screens
+package com.example.cinematicketsreservations.screens.home
 
 data class HomeUiState(
     val imageUrl: List<String> = listOf(

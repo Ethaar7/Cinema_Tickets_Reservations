@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.cinematicketsreservations.R
 import com.example.cinematicketsreservations.composable.ActorItem
 import com.example.cinematicketsreservations.composable.Bottom
@@ -35,8 +38,22 @@ import com.example.cinematicketsreservations.composable.Shape
 import com.example.cinematicketsreservations.composable.TextContent
 
 @Composable
-fun DetailsScreen() {
-    Box(Modifier.fillMaxSize()) {
+fun DetailsScreen(
+    navController: NavController,
+) {
+    DetailsContent()
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun DetailsContent() {
+
+
+    Box(
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
 
         Box(
             modifier = Modifier
@@ -48,7 +65,7 @@ fun DetailsScreen() {
                 contentDescription = "image film",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp),
+                    .height(400.dp),
                 contentScale = ContentScale.Crop
             )
 
@@ -60,16 +77,15 @@ fun DetailsScreen() {
                 Clock(color = Color.White)
             }
 
-            IconPlay(modifier = Modifier.align(Alignment.Center))
+            IconPlay(modifier = Modifier.padding(150.dp))
         }
 
         Box(
             modifier = Modifier
-                .height(500.dp)
+                .height(470.dp)
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 16.dp)
                 .background(
-                    shape = AbsoluteRoundedCornerShape(32.dp),
+                    shape = AbsoluteRoundedCornerShape(topLeft = 32.dp, topRight = 32.dp),
                     color = Color.White
                 )
         ) {
@@ -126,7 +142,7 @@ fun DetailsScreen() {
                 }
 
                 DescriptionText()
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.padding(8.dp))
                 Bottom(
                     text = stringResource(R.string.booking),
                     modifier = Modifier
@@ -137,11 +153,4 @@ fun DetailsScreen() {
         }
 
     }
-}
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun jk() {
-    DetailsScreen()
 }

@@ -12,7 +12,7 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.cinematicketsreservations.screens.HomeUiState
+import com.example.cinematicketsreservations.screens.home.HomeUiState
 
 
 @OptIn(ExperimentalFoundationApi::class)

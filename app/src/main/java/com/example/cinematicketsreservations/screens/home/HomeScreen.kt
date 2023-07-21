@@ -10,22 +10,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.cinematicketsreservations.composable.AutoSliding
-import com.example.cinematicketsreservations.composable.BottomNavigation
 import com.example.cinematicketsreservations.composable.Clock
 import com.example.cinematicketsreservations.composable.Description
 import com.example.cinematicketsreservations.composable.ImageBlur
 import com.example.cinematicketsreservations.composable.Shape
 import com.example.cinematicketsreservations.composable.chipGroup
+import com.example.cinematicketsreservations.screens.home.HomeUiState
+import com.example.cinematicketsreservations.ui.theme.Screen
 import com.google.accompanist.pager.ExperimentalPagerApi
+
+
+@Composable
+fun HomeScreen(
+    navController: NavController,
+) {
+    HomeContent(homeUiState = HomeUiState(), onClick = {
+        navController.navigate(Screen.DetailsScreen.rout)
+    })
+}
+
 
 @OptIn(ExperimentalPagerApi::class, ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(homeUiState: HomeUiState) {
+fun HomeContent(homeUiState: HomeUiState, onClick: () -> Unit) {
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         val pagerState = rememberPagerState(
             initialPage = 1,
         )
@@ -34,7 +49,8 @@ fun HomeScreen(homeUiState: HomeUiState) {
             Column {
                 chipGroup(modifier = Modifier.padding(bottom = 16.dp))
                 AutoSliding(
-                    images = homeUiState.imageUrl, pagerState = pagerState
+                    images = homeUiState.imageUrl, pagerState = pagerState,
+                    onClick = { onClick() }
                 )
             }
         }
@@ -49,13 +65,7 @@ fun HomeScreen(homeUiState: HomeUiState) {
             )
             Shape()
         }
-        BottomNavigation()
     }
 }
 
 
-@Preview(showSystemUi = true)
-@Composable
-fun Preview() {
-    HomeScreen(HomeUiState())
-}

@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.pager.HorizontalPager
@@ -27,7 +28,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 fun AutoSliding(
     images: List<String>,
     modifier: Modifier = Modifier,
-    pagerState: PagerState
+    pagerState: PagerState,
+    onClick: () -> Unit
 ) {
 
     HorizontalPager(
@@ -49,6 +51,7 @@ fun AutoSliding(
                 .aspectRatio(3 / 4f)
                 .scale(animatedScale)
                 .clip(RoundedCornerShape(16))
+                .clickable { onClick() }
         )
     }
 }
